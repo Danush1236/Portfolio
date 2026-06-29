@@ -123,6 +123,18 @@ export default function SmartBabyRoomDetails() {
               <div className="feature-card"><h4>Telegram Alerts</h4><p>Instant notifications sent to parents' phones via Telegram Bot.</p></div>
             </div>
           </div>
+                        <div className="video-section">
+                <div className="video-card">
+                  <iframe
+                    src="https://www.youtube.com/embed/vMGGejP0EPY?autoplay=1&mute=1&loop=1&playlist=vMGGejP0EPY"
+                    title="Portfolio Video"
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+              </div>
 
           <div className="content-section">
             <h3>Technologies Used</h3>

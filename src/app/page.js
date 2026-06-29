@@ -39,7 +39,7 @@ export default function Home() {
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Danushka Wickramasinghe — UI/UX Designer</title>
+        <title>Danushka Wickramasinghe — UI/UX Engineer</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
@@ -128,7 +128,7 @@ export default function Home() {
               Wickramasinghe
             </span>
           </h1>
-          <div className="hero-role">UI/UX Designer</div>
+          <div className="hero-role">UI/UX Engineer</div>
           <p className="hero-sub">
             Passionate about creating intuitive digital experiences that bridge
             the gap between technology and human needs.
