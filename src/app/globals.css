@@ -807,11 +807,12 @@
 /* Mobile alignment */
 @media (max-width: 600px) {
   .whatsapp-float {
-    bottom: 90px;
-    right: 16px;
+    bottom: 100px;
+    /* right: 16px; */
     width: 52px;
     height: 52px;
   }
+ 
 }
   /* PROJECT DETAILS PAGE */
   .project-details-section { 

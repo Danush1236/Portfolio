@@ -630,8 +630,13 @@ export default function Home() {
             />
             <div className="gallery-scroll-label">Design 1</div>
           </a>
-          <a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="gallery-scroll-item">
-            <div className="gallery-scroll-image" style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'}}></div>
+          <a href="https://www.figma.com/design/3gOHbDxLZEIP49Y3RFYVNI/Untitled?node-id=3-2&t=70vniSR3VwSP6Zze-1" target="_blank" rel="noopener noreferrer" className="gallery-scroll-item">
+             <img
+            src="/image/project/neohouse.png"
+            alt="Neo House Design"
+            width={240}
+            height={180}
+            />
             <div className="gallery-scroll-label">Design 2</div>
           </a>
           <a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="gallery-scroll-item">
@@ -978,8 +983,7 @@ export default function Home() {
   </div>
 
 </div>
-
-  {/* Chatbot Icon */}
+{/* Chatbot Icon */}
   <div className="chatbot-icon" id="chatbotIcon" onClick={() => openChat()}>
     <svg
       width={24}
