@@ -410,7 +410,7 @@ export default function Home() {
             <div
               className="project-cta"
             >
-              View Website →
+              View Website
             </div>
           </div>
         </div>
@@ -437,7 +437,7 @@ export default function Home() {
                 <span className="tag">PHP</span>
               </div>
               <div className="project-cta">
-                View Details →
+                View Details
               </div>
             </div>
           </div>
@@ -465,7 +465,7 @@ export default function Home() {
                 <span className="tag">Mobile</span>
               </div>
               <div className="project-cta">
-                View Details →
+                View Details
               </div>
             </div>
           </div>
@@ -494,7 +494,7 @@ export default function Home() {
                 <span className="tag">System Design</span>
               </div>
               <div className="project-cta">
-                View Details →
+                View Details
               </div>
             </div>
           </div>
@@ -521,7 +521,7 @@ export default function Home() {
                 <span className="tag">Telegram Bot</span>
               </div>
               <div className="project-cta">
-                View Details →
+                View Details
               </div>
             </div>
           </div>
@@ -548,7 +548,7 @@ export default function Home() {
                 <span className="tag">Transit</span>
               </div>
               <div className="project-cta">
-                View Details →
+                View Details
               </div>
             </div>
           </div>
@@ -575,7 +575,7 @@ export default function Home() {
                 <span className="tag">Web Design</span>
               </div>
               <div className="project-cta">
-                View Details →
+                View Details
               </div>
             </div>
           </div>
@@ -603,7 +603,7 @@ export default function Home() {
                 <span className="tag">Responsive</span>
               </div>
               <div className="project-cta">
-                View Details →
+                View Details
               </div>
             </div>
           </div>
