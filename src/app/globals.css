@@ -68,7 +68,7 @@
   .nav-cta:hover { background: var(--primary-dark) !important; color: #fff !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,121,255,0.3) !important; }
  
   /* Hamburger */
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger { display: none; flex-direction: row !important; gap: 5px; cursor: pointer; padding: 4px; }
   .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
   .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -1201,7 +1201,11 @@
     .skills-grid { grid-template-columns: 1fr; }
     .tools-grid { grid-template-columns: repeat(3, 1fr); }
     .projects-grid { grid-template-columns: 1fr; }
-    .nav-inner { padding: 0 16px; height: auto; min-height: 68px; }
+   .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
     .nav-logo { font-size: 14px; gap: 6px; }
     .nav-logo .nav-profile-img { margin: 0; width: 32px; height: 32px; }
     .scroll-indicator { display: none; }

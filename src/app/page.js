@@ -4,6 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Script from "next/script";
 import Link from "next/link";
+import Navbar from "@/components/navbar";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -48,7 +49,8 @@ export default function Home() {
         />
         <link rel="stylesheet" href="/style.css" />
       </Head>
-      {/* ─── NAV ─── */}
+      <Navbar />
+      {/* ─── NAV ───
   <nav id="navbar">
     <div className="nav-inner">
       <a href="#" className="nav-logo">
@@ -108,7 +110,7 @@ export default function Home() {
     <a href="#contact" onClick={() => closeMenu()}>
       Contact
     </a>
-  </div>
+  </div> */
   {/* ─── HERO ─── */}
   <section id="hero">
     <div className="hero-bg">

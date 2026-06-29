@@ -4,17 +4,13 @@ import Image from "next/image";
 import Head from "next/head";
 import Script from "next/script";
 import Link from "next/link";
+import Navbar from "@/components/navbar";
 import { useEffect } from "react";
 
 export default function EventstuneDetails() {
-  useEffect(() => {
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (hamburger) hamburger.classList.remove('open');
-    if (mobileMenu) mobileMenu.classList.remove('open');
-  }, []);
   return (
     <>
+      <Navbar />
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,68 +23,6 @@ export default function EventstuneDetails() {
         />
         <link rel="stylesheet" href="/style.css" />
       </Head>
-
-      <nav id="navbar">
-        <div className="nav-inner">
-          <a href="/" className="nav-logo">
-            <img
-              src="/image/dilan.jpg"
-              alt="Danushka Wickramasinghe"
-              className="nav-profile-img"
-            />
-            Danushka Wickramasinghe
-          </a>
-          <ul className="nav-links">
-            <li>
-              <a href="/#about">About</a>
-            </li>
-            <li>
-              <a href="/#tools">Tools</a>
-            </li>
-            <li>
-              <a href="/#projects">Projects</a>
-            </li>
-            <li>
-              <a href="/#gallery">Gallery</a>
-            </li>
-            <li>
-              <a href="/#education">Education</a>
-            </li>
-            <li>
-              <a href="/#contact" className="nav-cta">
-                Contact
-              </a>
-            </li>
-          </ul>
-          <div className="hamburger" id="hamburger" onClick={() => toggleMenu()}>
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <div className="mobile-menu" id="mobileMenu">
-        <a href="/#about" onClick={() => closeMenu()}>
-          About
-        </a>
-        <a href="/#tools" onClick={() => closeMenu()}>
-          Tools
-        </a>
-        <a href="/#projects" onClick={() => closeMenu()}>
-          Projects
-        </a>
-        <a href="/#gallery" onClick={() => closeMenu()}>
-          Gallery
-        </a>
-        <a href="/#education" onClick={() => closeMenu()}>
-          Education
-        </a>
-        <a href="/#contact" onClick={() => closeMenu()}>
-          Contact
-        </a>
-      </div>
 
       {/* ─── PROJECT DETAILS ─── */}
       <section className="project-details-section">
