@@ -615,6 +615,82 @@ section > .container > p {
   gap: 0.75rem;
 }
 
+/* ─── UPCOMING PROJECTS ─── */
+.upcoming-section {
+  padding: 6rem 2rem;
+  background: var(--bg-light);
+}
+
+.upcoming-card {
+  position: relative;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #0f172a;
+  min-height: 400px;
+}
+
+.upcoming-media {
+  position: relative;
+  min-height: 400px;
+}
+
+.upcoming-image {
+  position: absolute;
+  inset: 0;
+}
+
+.upcoming-image-content {
+  object-fit: cover;
+}
+
+.upcoming-image-desktop {
+  display: block;
+}
+
+.upcoming-image-mobile {
+  display: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  padding: 2rem;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.9) 70%);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.overlay h3 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.overlay p {
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.86);
+  margin-bottom: 1rem;
+}
+
+.tech {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.74);
+}
+
 /* ─── EDUCATION ─── */
 #education {
   background: var(--bg-light);
@@ -1189,6 +1265,31 @@ section > .container > p {
 
   .project-details-section {
     padding: 60px 1rem;
+  }
+
+  .upcoming-section {
+    padding: 4rem 1rem;
+  }
+
+  .upcoming-card,
+  .upcoming-media {
+    min-height: 320px;
+  }
+
+  .upcoming-image-desktop {
+    display: none;
+  }
+
+  .upcoming-image-mobile {
+    display: block;
+  }
+
+  .overlay {
+    padding: 1.5rem;
+  }
+
+  .overlay h3 {
+    font-size: 1.5rem;
   }
 
   #toast {

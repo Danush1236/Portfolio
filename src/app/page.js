@@ -690,19 +690,33 @@ export default function Home() {
   </div>
 
   <div className="upcoming-card">
-  <div className="relative w-full h-[400px] overflow-hidden">
- <Image
-  src="/image/srilanka.png"
-  alt="Sri Lanka"
-  width={600}
-  height={350}
-/>
-</div>
+    <div className="upcoming-media">
+      <div className="upcoming-image upcoming-image-desktop" aria-hidden="true">
+        <Image
+          src="/image/srilanka.png"
+          alt="Sri Lanka"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 1300px"
+          className="upcoming-image-content"
+        />
+      </div>
+
+      <div className="upcoming-image upcoming-image-mobile" aria-hidden="true">
+        <Image
+          src="/image/srilanka-mobile1.png"
+          alt="Sri Lanka Mobile"
+          fill
+          sizes="(max-width: 768px) 100vw, 600px"
+          className="upcoming-image-content"
+        />
+      </div>
+    </div>
 
     <div className="overlay">
       <span className="status">Coming Soon</span>
 
-      <h3>CivicFix</h3>
+      <h3>Rebuild Lanka</h3>
 
       <p>
         A smart community reporting platform that enables citizens to
