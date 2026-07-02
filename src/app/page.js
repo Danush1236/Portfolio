@@ -1,5 +1,6 @@
 'use client';
 import "./globals.css";
+import emailjs from "@emailjs/browser";
 import Image from "next/image";
 import Head from "next/head";
 import Script from "next/script";
@@ -9,8 +10,75 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [chatOpen, setChatOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const openChat = () => setChatOpen(true);
   const closeChat = () => setChatOpen(false);
+
+  const showToast = (type, icon, title, sub) => {
+    if (typeof window !== "undefined" && typeof window.showToast === "function") {
+      window.showToast(type, icon, title, sub);
+    }
+  };
+
+  const closeToast = () => {
+    if (typeof window !== "undefined" && typeof window.hideToast === "function") {
+      window.hideToast();
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      showToast(
+        "error",
+        "⚠️",
+        "Email setup missing",
+        "Add your EmailJS service, template, and public key in .env.local first."
+      );
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: e.target.name.value,
+          email: e.target.email.value,
+          subject: e.target.subject.value,
+          message: e.target.message.value,
+          to_email: "dilandanushka345@gmail.com",
+          reply_to: e.target.email.value,
+        },
+        publicKey
+      );
+
+      e.target.reset();
+      showToast(
+        "success",
+        "🎉",
+        "Message Sent!",
+        "Thanks! I received your message and will get back to you soon."
+      );
+    } catch (error) {
+      console.error("Email send failed:", error);
+      showToast(
+        "error",
+        "⚠️",
+        "Message not sent",
+        "Please try again in a moment or contact me directly by email."
+      );
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   useEffect(() => {
     // Reset scroll position when returning to home page
@@ -613,7 +681,42 @@ export default function Home() {
       </div>
     </div>
   </section>
-  {/* ─── UI DESIGN GALLERY ─── */}
+<section id="upcoming-projects" className="upcoming-section">
+  <div className="section-title">
+    <h2>Upcoming Projects</h2>
+    <p>
+      A preview of ongoing projects where concepts evolve into functional, user-centered digital experiences.
+    </p>
+  </div>
+
+  <div className="upcoming-card">
+  <div className="relative w-full h-[400px] overflow-hidden">
+ <Image
+  src="/image/srilanka.png"
+  alt="Sri Lanka"
+  width={600}
+  height={350}
+/>
+</div>
+
+    <div className="overlay">
+      <span className="status">Coming Soon</span>
+
+      <h3>CivicFix</h3>
+
+      <p>
+        A smart community reporting platform that enables citizens to
+        report public issues, track resolutions, and collaborate with
+        local authorities to build better communities.
+      </p>
+
+      <div className="tech">
+        UI/UX Engineer • Next.js • React.js
+      </div>
+    </div>
+  </div>
+</section>
+  {/* ─── UI DESIGN GALLERY ───
   <section id="gallery">
     <div className="container">
       <div className="section-label">Inspiration</div>
@@ -671,7 +774,7 @@ export default function Home() {
         Hover over any design to pause • Click to view in Figma
       </p>
     </div>
-  </section>
+  </section> */}
   {/* ─── EDUCATION & CERTS ─── */}
   <section id="education">
     <div className="container">
@@ -804,109 +907,187 @@ export default function Home() {
       </div>
     </div>
   </section>
-  {/* ─── CONTACT ─── */}
   <section id="contact">
-    <div className="container">
-      <div className="section-label">Get In Touch</div>
-      <h2 className="section-title">
-        Let's <span>Connect</span>
-      </h2>
-      <div className="contact-grid">
-        <div className="contact-info reveal">
-          <p>
-            Have a project in mind, a collaboration idea, or just want to say
-            hello? I'd love to hear from you. Fill in the form and I'll get back
-            to you within 24 hours.
-          </p>
-          <div className="contact-items">
-            <div className="contact-item">
-              {/* <div class="contact-item-icon"></div> */}
-              <div>
-                <div className="contact-item-label">Email</div>
-                <div className="contact-item-value">
-                  dilandanushka345@gmail.com
+      <div className="container">
+
+        <div className="section-label">Get In Touch</div>
+
+        <h2 className="section-title">
+          Let's <span>Connect</span>
+        </h2>
+
+        <div className="contact-grid">
+
+          {/* ─── LEFT SIDE INFO ─── */}
+          <div className="contact-info reveal">
+            <p>
+              Have a project in mind, a collaboration idea, or just want to say
+              hello? I'd love to hear from you. Fill in the form and I'll get back
+              to you within 24 hours.
+            </p>
+
+            <div className="contact-items">
+
+              {/* EMAIL */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <Image
+                    src="/image/icon/mail1.gif"
+                    alt="Email"
+                    width={24}
+                    height={24}
+                    unoptimized
+                  />
+                </div>
+                <div>
+                  <div className="contact-item-label">Email</div>
+                  <div className="contact-item-value">
+                    dilandanushka345@gmail.com
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="contact-item">
-              {/* <div class="contact-item-icon"></div> */}
-              <div>
-                <div className="contact-item-label">Phone</div>
-                <div className="contact-item-value">+94 763659342</div>
-              </div>
-            </div>
-            <div className="contact-item">
-              {/* <div class="contact-item-icon"></div> */}
-              <div>
-                <div className="contact-item-label">Location</div>
-                <div className="contact-item-value">Sri Lanka</div>
-              </div>
-            </div>
-            <a
-              href="https://www.linkedin.com/in/danushka-wickramasinghe"
-              target="_blank"
-              className="contact-item"
-            >
-              {/* <div class="contact-item-icon"></div> */}
-              <div>
-                <div className="contact-item-label">LinkedIn</div>
-                <div className="contact-item-value">
-                  www.linkedin.com/in/danushka-wickramasinghe
+
+              {/* WHATSAPP */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <Image
+                    src="/image/icon/whatsapp.gif"
+                    alt="WhatsApp"
+                    width={24}
+                    height={24}
+                    unoptimized
+                  />
+                </div>
+                <div>
+                  <div className="contact-item-label">Phone / WhatsApp</div>
+                  <div className="contact-item-value">
+                    +94 763659342
+                  </div>
                 </div>
               </div>
-            </a>
+
+              {/* LOCATION */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <Image
+                    src="/image/icon/location.gif"
+                    alt="Location"
+                    width={24}
+                    height={24}
+                    unoptimized
+                  />
+                </div>
+                <div>
+                  <div className="contact-item-label">Location</div>
+                  <div className="contact-item-value">
+                    Sri Lanka
+                  </div>
+                </div>
+              </div>
+
+              {/* LINKEDIN */}
+              <a
+                href="https://www.linkedin.com/in/danushka-wickramasinghe"
+                target="_blank"
+                rel="noreferrer"
+                className="contact-item"
+              >
+                <div className="contact-icon">
+                  <Image
+                    src="/image/icon/linkedin.gif"
+                    alt="LinkedIn"
+                    width={24}
+                    height={24}
+                    unoptimized
+                  />
+                </div>
+
+                <div>
+                  <div className="contact-item-label">LinkedIn</div>
+                  <div className="contact-item-value">
+                    linkedin.com/in/danushka-wickramasinghe
+                  </div>
+                </div>
+              </a>
+
+            </div>
           </div>
-        </div>
-        <form
-          className="contact-form reveal reveal-delay-2"
-          id="contactForm"
-          onSubmit={(e) => handleSubmit(e)}
-        >
-          <div className="form-row">
-            <div className="form-group">
-              <input type="text" id="name" placeholder=" " autoComplete="off" />
-              <label htmlFor="name">Your Name</label>
+
+          {/* ─── RIGHT SIDE FORM ─── */}
+          <form
+            className="contact-form reveal reveal-delay-2"
+            id="contactForm"
+            onSubmit={handleSubmit}
+          >
+
+            <div className="form-row">
+
+              <div className="form-group">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder=" "
+                  autoComplete="off"
+                  required
+                />
+                <label htmlFor="name">Your Name</label>
+              </div>
+
+              <div className="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder=" "
+                  autoComplete="off"
+                  required
+                />
+                <label htmlFor="email">Email Address</label>
+              </div>
+
             </div>
+
             <div className="form-group">
               <input
-                type="email"
-                id="email"
+                type="text"
+                id="subject"
+                name="subject"
                 placeholder=" "
                 autoComplete="off"
               />
-              <label htmlFor="email">Email Address</label>
+              <label htmlFor="subject">Subject</label>
             </div>
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              id="subject"
-              placeholder=" "
-              autoComplete="off"
-            />
-            <label htmlFor="subject">Subject</label>
-          </div>
-          <div className="form-group textarea">
-            <textarea id="message" placeholder=" " defaultValue={""} />
-            <label htmlFor="message">Your Message</label>
-          </div>
-          <button type="submit" className="btn-submit">
-            <svg
-              width={16}
-              height={16}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2.5"
-            >
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-            </svg>
-            Send Message
-          </button>
-        </form>
+
+            <div className="form-group textarea">
+              <textarea
+                id="message"
+                name="message"
+                placeholder=" "
+                required
+              />
+              <label htmlFor="message">Your Message</label>
+            </div>
+
+            <button type="submit" className="btn-submit" disabled={isSending}>
+              <svg
+                width={16}
+                height={16}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg>
+              {isSending ? "Sending..." : "Send Message"}
+            </button>
+
+          </form>
+
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   {/* Toast */}
   <div className="toast" id="toast">
     <div className="toast-icon" id="toastIcon" />
@@ -914,7 +1095,7 @@ export default function Home() {
       <div className="toast-title" id="toastTitle" />
       <div className="toast-sub" id="toastSub" />
     </div>
-    <div className="toast-close" onClick={() => hideToast()}>
+    <div className="toast-close" onClick={closeToast}>
       ✕
     </div>
   </div>
